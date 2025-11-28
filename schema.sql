@@ -1,13 +1,10 @@
-**Table quartier**
-
-```SQL
+/*Table quartier*/
 CREATE TABLE quartier (
     id_quartier SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL
 );
-```
 
-
+/*Table bar*/
 CREATE TABLE bar (
     id_bar SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
@@ -16,7 +13,7 @@ CREATE TABLE bar (
     FOREIGN KEY (id_quartier) REFERENCES quartier(id_quartier)
 );
 
-
+/*Table bière*/
 CREATE TABLE biere (
     id_biere SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
@@ -24,7 +21,7 @@ CREATE TABLE biere (
     degree_alcool NUMERIC(4,2)
 );
 
-
+/*Table prix*/
 CREATE TABLE prix (
     id_bar INT NOT NULL,
     id_biere INT NOT NULL,
