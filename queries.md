@@ -1,5 +1,6 @@
 **Prix moyen de la bière par quartier**
 
+```SQL
 SELECT 
     q.nom AS quartier,
     ROUND(AVG(p.prix), 2) AS prix_moyen
@@ -8,10 +9,11 @@ JOIN bar b ON b.id_quartier = q.id_quartier
 JOIN prix p ON p.id_bar = b.id_bar
 GROUP BY q.nom
 ORDER BY prix_moyen ASC;
-
+```
 
 **Bars vendant l’IPA la moins chère**
 
+```SQL
 SELECT 
     b.nom AS bar,
     p.prix AS prix_ipa
@@ -25,9 +27,11 @@ WHERE bi.type = 'IPA'
         JOIN biere bi2 ON bi2.id_biere = p2.id_biere
         WHERE bi2.type = 'IPA'
   );
+```
 
 **Bières vendues dans ≥ 5 bars**
 
+```SQL
 SELECT 
     bi.nom AS biere,
     COUNT(p.id_bar) AS nb_bars
@@ -36,9 +40,11 @@ JOIN prix p ON p.id_biere = bi.id_biere
 GROUP BY bi.nom
 HAVING COUNT(p.id_bar) >= 5
 ORDER BY nb_bars DESC;
+```
 
 **Bars sans bière à moins de 6 €**
 
+```SQL
 SELECT 
     b.nom AS bar
 FROM bar b
@@ -49,6 +55,7 @@ WHERE NOT EXISTS (
       AND p.prix < 6
 )
 ORDER BY b.nom;
+```
 
 **Top bar avec le panier moyen maximum**
 ```SQL
