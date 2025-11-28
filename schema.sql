@@ -1,7 +1,11 @@
+**Table quartier**
+
+```SQL
 CREATE TABLE quartier (
     id_quartier SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL
 );
+```
 
 
 CREATE TABLE bar (
